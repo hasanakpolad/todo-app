@@ -1,6 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 
 function List({ showTodo }) {
+    const [done, setDone] = useState(false)
+    const changeValue = (e) => {
+        setDone(e.target.value)
+    }
     return (
         <div>
             <section className="main">
@@ -9,7 +13,10 @@ function List({ showTodo }) {
                     Mark all as complete
                 </label>
 
-                <ul className="todo-list">
+                <ul className='todo-list'>
+                    {showTodo.map((item) => <li className={item.done ? 'completed' : ''}> <input onClick={changeValue} className='toggle' type="checkbox" /><label>{item.text}</label> <button className="destroy"></button></li>)}
+                </ul>
+                {/* <ul className="todo-list">
                     <li className="completed">
                         <div className="view">
                             <input className="toggle" type="checkbox" />
@@ -17,7 +24,7 @@ function List({ showTodo }) {
                             <button className="destroy"></button>
                         </div>
                     </li>
-                    {/* <li>
+                     <li>
                         <div className="view">
                             <input className="toggle" type="checkbox" />
                             <label>Learn React</label>
@@ -30,8 +37,8 @@ function List({ showTodo }) {
                             <label>Have a life!</label>
                             <button className="destroy"></button>
                         </div>
-                    </li> */}
-                </ul>
+                    </li> 
+                </ul>*/}
             </section>
         </div>
     )

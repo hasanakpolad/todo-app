@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const initialValues = { text: '', done: false }
+const initialValues = { id: '', text: '', done: false }
 function Heads({ addTodo, showTodo }) {
     const [search, setSearch] = useState(initialValues)
     useEffect(() => {

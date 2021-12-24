@@ -9,8 +9,8 @@ function Todo() {
     return (
         <div className='main'>
             <Heads addTodo={setTodo} showTodo={todo} />
-            <List showTodo={todo} />
-            <Form showTodo={todo} />
+            <List showTodo={todo} getTodo={setTodo} />
+            <Form showTodo={todo} changeTodo={setTodo} />
         </div>
     )
 }

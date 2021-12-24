@@ -1,24 +1,38 @@
-import React from 'react'
+import { useState } from 'react'
 
-function Form({ showTodo }) {
+function Form({ showTodo, changeTodo }) {
+    const filteredActive = showTodo.filter((item) => {
+        return Object.keys(item).some((key) =>
+            item[key].toString().toLowerCase().includes('false'))
+    })
+    // const filteredAll = showTodo;
+    // const filteredCompleted = showTodo.filter((item) => {
+    //     return Object.keys(item).some((key) =>
+    //         item[key].toString().toLowerCase().includes('true'))
+    // })
+    const [data, setData] = useState([])
+    const onChangeSelect = () => {
+        changeTodo(...showTodo, data)
+    }
+
     return (
         <div className='foot'>
             <footer className="footer">
 
                 <span className="todo-count">
-                    <strong>{showTodo.length}</strong>
+                    <strong>{filteredActive.length}</strong>
                     items left
                 </span>
 
                 <ul className="filters">
                     <li>
-                        <a className="selected">All</a>
+                        <a className='selected'>All</a>
                     </li>
                     <li>
-                        <a>Active</a>
+                        <a >Active</a>
                     </li>
                     <li>
-                        <a>Completed</a>
+                        <a >Completed</a>
                     </li>
                 </ul>
 
@@ -26,7 +40,7 @@ function Form({ showTodo }) {
                     Clear completed
                 </button>
             </footer>
-        </div>
+        </div >
     )
 }
 

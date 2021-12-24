@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const initialValues = { id: '', text: '', done: false }
+const initialValues = { id: 1, text: '', done: false }
 function Heads({ addTodo, showTodo }) {
     const [search, setSearch] = useState(initialValues)
     useEffect(() => {
@@ -12,6 +12,7 @@ function Heads({ addTodo, showTodo }) {
     const onSubmit = (e) => {
         e.preventDefault();
         if (search.text === '') return false
+        search.id += 1
         addTodo([...showTodo, search])
     }
     return (

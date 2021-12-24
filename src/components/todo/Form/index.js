@@ -1,26 +1,13 @@
 import { useState } from 'react'
 
-function Form({ showTodo, changeTodo }) {
-    const filteredActive = showTodo.filter((item) => {
-        return Object.keys(item).some((key) =>
-            item[key].toString().toLowerCase().includes('false'))
-    })
-    // const filteredAll = showTodo;
-    // const filteredCompleted = showTodo.filter((item) => {
-    //     return Object.keys(item).some((key) =>
-    //         item[key].toString().toLowerCase().includes('true'))
-    // })
-    const [data, setData] = useState([])
-    const onChangeSelect = () => {
-        changeTodo(...showTodo, data)
-    }
+function Form({ showTodo }) {
 
     return (
         <div className='foot'>
             <footer className="footer">
 
                 <span className="todo-count">
-                    <strong>{filteredActive.length}</strong>
+                    <strong>{showTodo.length}</strong>
                     items left
                 </span>
 
